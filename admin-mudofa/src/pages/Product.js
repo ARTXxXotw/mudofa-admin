@@ -64,6 +64,7 @@ export default function Product() {
     <th>id</th>
     <th>image</th>
     <th>desc</th>
+    <th>news_id</th>
     <th>time_create</th>
     <th>delete</th>
     <th>edit</th>
@@ -76,6 +77,7 @@ export default function Product() {
         <td>{item.id}</td>
         <td><img className='table-img' src={item.image} alt="" /></td>
         <td>{item.desc}</td>
+        <td>{item.news_id}</td>
         <td>{item.time_create.slice(0,10)}</td>
         <td><button onClick={()=>deltemetodId(item.id)}>delete</button></td>
         <td><button onClick={()=>editmalumot(item.id)}>edit</button></td>

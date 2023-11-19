@@ -4,7 +4,7 @@ import Product from "./pages/Product";
 
 import SignIn from "./pages/SignIn";
 import Main from "./components/layout/Main";
-
+import Company from './pages/Company.js'
 import "antd/dist/antd.css";
 import "./assets/styles/main.css";
 import "./assets/styles/responsive.css";
@@ -21,8 +21,8 @@ function App() {
           </>):(
         <Main>
         <Route exact path="/Product" component={Product} />
-
-        <Redirect from="/Product" to="/Product" />
+        <Route exact path="/Company" component={Company} />
+       
         </Main>
         )}
       </Switch>
