@@ -4,10 +4,15 @@ import url from '../Host'
 import axios from 'axios'
 
 export default function Product() {
+  const [page,setPage]=useState(1)
   const [data,setData]=useState([]);
+  const [date,setDate]=useState([]);
+  const [dateID,setDateID]=useState([]);
   const [data1,setData1]=useState([]);
   const [dataiD,setDataiD]=useState([]);
   const [data1iD,setData1iD]=useState([]);
+  const [newiD,setNewiD]=useState([]);
+  const [new1iD,setNew1iD]=useState([]);
   useEffect(()=>{
     axios.get(`https://new-uzbek.onrender.com/api/v1/new/`).then(res=>{
       setData(res.data)
@@ -20,6 +25,11 @@ export default function Product() {
       console.log(res.data)
     })
   },[])
+  // useEffect(()=>{
+  //   axios.get(`https://new-uzbek.onrender.com/api/v1/new_action`).then(res=>{
+  //     setDate(res.data)
+  //   })
+  // },[])
   function editmetod(){
     var data = new FormData;
     data.append(`image`, document.querySelector("#bir").value)
@@ -44,7 +54,7 @@ export default function Product() {
     var data = new FormData;
     data.append(`image`, document.querySelector("#post1").value)
     data.append(`title`, document.querySelector("#post2").value)
-    data.append(`category`, document.querySelector("#category").value)
+    // data.append(`category`, document.querySelector("#category").value)
     data.append(`category_id`, document.querySelector("#post3").value)
   
        axios.post(`https://new-uzbek.onrender.com/api/v1/new/`,data,{headers:{Authorization:`Bearer ${sessionStorage.getItem("token")}`}}).then(res=>{
@@ -64,13 +74,75 @@ export default function Product() {
       window.location.reload()
     })
   }
+
+
+function newaction(id){
+  setDateID(id)
+    axios.get(`https://new-uzbek.onrender.com/api/v1/new_action/`).then(res=>{
+    const Filter=res.data.filter(item=>item.news_id==id)
+    setDate(Filter)
+    console.log(Filter,"test");
+   setPage(2)
+  })
+}
+
+function newactionedit(id){
+  setNewiD(id)
+  document.querySelector(".bu-filyal-omagadasdessdas").style=`display:flex`
+}
+
+function editnew(){
+   var data = new FormData;
+    data.append(`image`, document.querySelector("#new1").value)
+    data.append(`desc`, document.querySelector("#new2").value)
+    data.append(`news_id`,dateID)
+
+
+       axios.put(`https://new-uzbek.onrender.com/api/v1/new_action/${newiD}`,data,{headers:{Authorization:`Bearer ${sessionStorage.getItem("token")}`}}).then(res=>{
+      alert("Успешно")
+      window.location.reload()
+    }).catch(err=>{
+      alert("error")
+    })
+}
+
+function postnew(){
+  var data = new FormData;
+    data.append(`image`, document.querySelector("#postnew1").value)
+    data.append(`desc`, document.querySelector("#postnew2").value)
+    data.append(`news_id`,dateID)
+
+
+       axios.post(`https://new-uzbek.onrender.com/api/v1/new_action/`,data,{headers:{Authorization:`Bearer ${sessionStorage.getItem("token")}`}}).then(res=>{
+      alert("Успешно")
+      window.location.reload()
+    }).catch(err=>{
+      alert("error")
+    })
+}
+
+function deletee(id){
+  setNew1iD(id)
+  document.querySelector(".bu-filyala-assddeasas").style=`display:flex`
+}
+
+function detelnewactions(){
+  axios.delete(`https://new-uzbek.onrender.com/api/v1/new_action/${new1iD}`,{headers:{Authorization:`Bearer ${sessionStorage.getItem("token")}`}}).then(res=>{
+    alert("Вы удалили ")
+    window.location.reload()
+  })
+}
+
   return (
     <div>
-      <div className="all-btn">
+  
+      
+{page===1?(
+  <div>
+        <div className="all-btn">
         <button onClick={()=>document.querySelector(".bu-filyal-omagadasdessd1").style=`display:block`}>dabavit</button>
       </div>
-      
-      <table id="customers">
+          <table id="customers">
   <tr>
     <th>id</th>
     <th>image</th>
@@ -85,11 +157,11 @@ export default function Product() {
       return(
         <>
         <tr>
-        <td>{item.id}</td>
-        <td><img className='table-img' src={item.image} alt="" /></td>
-        <td>{item.title}</td>
-        <td>{item.category_id}</td>
-        <td>{item.time_create.slice(0,10)}</td>
+        <td onClick={()=>newaction(item.id)}>{item.id}</td>
+        <td onClick={()=>newaction(item.id)}><img className='table-img' src={item.image} alt="" /></td>
+        <td onClick={()=>newaction(item.id)}>{item.title}</td>
+        <td onClick={()=>newaction(item.id)}>{item.category_id}</td>
+        <td onClick={()=>newaction(item.id)}>{item.time_create.slice(0,10)}</td>
         <td><button onClick={()=>deltemetodId(item.id)}>delete</button></td>
         <td><button onClick={()=>editmalumot(item.id)}>edit</button></td>
        </tr>
@@ -100,6 +172,108 @@ export default function Product() {
   
      
 </table>
+  </div>
+):(
+  <div>
+    <div className="all-btn1">
+      <button onClick={()=>setPage(1)}>nazad</button>
+    </div>
+    <div className="all-btn">
+      <button onClick={()=>document.querySelector(".bu-filyal-omagadasdessdas1").style=`display:`}> dabavit</button>
+    </div>
+          <table id="customers">
+  <tr>
+    <th>id</th>
+    <th>image</th>
+    <th>title</th>
+    <th>category_id</th>
+    <th>delete</th>
+    <th>edit</th>
+  </tr>
+  {date.map((item)=>{
+    return(
+      <>
+      <tr>
+        <td>{item.id}</td>
+        <td><img  className='table-img'  src={item.image} alt="" /></td>
+        <td>{item.desc}</td>
+        <td>{item.news_id}</td>
+        <td><button onClick={()=>deletee(item.id)} >delete</button></td>
+        <td><button onClick={()=>newactionedit(item.id)}>edit</button></td>
+      </tr>
+      </>
+    )
+  })}
+  
+     
+</table>
+  </div>
+)}
+
+
+
+
+<div className="bu-filyal-omagadasdessdas" style={{display:"none"}}>
+
+<div className="modal-delete">
+    <div className="modal-ichi-inp">
+      <div className="x-dv">
+<div className="xx"  onClick={()=>document.querySelector(".bu-filyal-omagadasdessdas").style=`display:none`}>
+  X 
+</div>
+</div>
+        <span>image</span><br />
+        <input type="text"  id='new1' /><br />
+        <span>desc</span><br />
+        <input type="text" id='new2' /><br />
+        <br />
+        <button onClick={()=>editnew()} >edit</button>
+    </div>
+</div>
+</div>
+
+<div className="bu-filyal-omagadasdessdas1" style={{display:"none"}}>
+
+<div className="modal-delete">
+    <div className="modal-ichi-inp">
+      <div className="x-dv">
+<div className="xx"  onClick={()=>document.querySelector(".bu-filyal-omagadasdessdas1").style=`display:none`}>
+  X 
+</div>
+</div>
+        <span>image</span><br />
+        <input type="text"  id='postnew1' /><br />
+        <span>desc</span><br />
+        <input type="text" id='postnew2' />
+        <br />
+        <button onClick={()=>postnew()} >edit</button>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div className="bu-filyala-assddeasas" style={{display:"none"}} >
+<div className="modal-delete">
+    <div className="modal-ichi">
+      <p>Вы действительно хотите удалить этот</p>
+      <div className="btn-modal">
+      <button onClick={()=>detelnewactions()}>ДА</button>
+      <button onClick={()=>document.querySelector(".bu-filyala-assddeasas").style=`display:none`}>Нет</button>
+      
+      </div>
+    </div>
+</div>
+</div>
+
+
+
 
 <div className="bu-filyal-omagadasdessd">
 
@@ -147,7 +321,7 @@ export default function Product() {
         <input type="text" id='post2' /><br />
         <span>category_id</span><br />
         <input type="text" id='post3' /><br />
-        <span>category</span><br />
+        {/* <span>category</span><br />
         <select name="" id="category"><br />
           {data1.map((item)=>{
             return(
@@ -156,12 +330,13 @@ export default function Product() {
               </>
             )
           })}
-        </select><br />
+        </select><br /> */}
         <br />
         <button onClick={()=>postmetod()} >dabavit</button>
     </div>
 </div>
 </div>
+
 
 <div className="bu-filyala-assdde">
 <div className="modal-delete">
