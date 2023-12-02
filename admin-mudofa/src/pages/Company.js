@@ -8,6 +8,30 @@ export default function Company() {
     useEffect(()=>{
         axios.get(`https://new-uzbek.onrender.com/api/v1/company/`).then(res=>{
             setData(res.data)
+            res.data.map(item=>{
+              document.querySelector("#post2").value=item.phone1 
+              document.querySelector("#post3").value=item.phone2 
+              document.querySelector("#post4").value=item.instagram 
+              document.querySelector("#post5").value=item.facebook 
+              document.querySelector("#post6").value=item.telegram 
+              document.querySelector("#post7").value=item.youtobe 
+              document.querySelector("#post8").value=item.app_store 
+              document.querySelector("#post9").value=item.play_market 
+              document.querySelector("#post10").value=item.twitter 
+              document.querySelector("#post11").value=item.email 
+
+
+              document.querySelector("#edit2").value=item.phone1 
+              document.querySelector("#edit3").value=item.phone2 
+              document.querySelector("#edit4").value=item.instagram 
+              document.querySelector("#edit5").value=item.facebook 
+              document.querySelector("#edit6").value=item.telegram 
+              document.querySelector("#edit7").value=item.youtobe 
+              document.querySelector("#edit8").value=item.app_store 
+              document.querySelector("#edit9").value=item.play_market 
+              document.querySelector("#edit10").value=item.twitter 
+              document.querySelector("#edit11").value=item.email 
+           })
         })
     },[])
 

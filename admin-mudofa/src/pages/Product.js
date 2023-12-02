@@ -34,7 +34,7 @@ export default function Product() {
     var data = new FormData;
     data.append(`image`, document.querySelector("#bir").value)
     data.append(`title`, document.querySelector("#ikki").value)
-    data.append(`category_id`, document.querySelector("#uch").value)
+    data.append(`category_id`, 1)
     data.append(`category`, document.querySelector("#category1").value)
     data.append(`look`,1 )
 
@@ -55,7 +55,7 @@ export default function Product() {
     data.append(`image`, document.querySelector("#post1").value)
     data.append(`title`, document.querySelector("#post2").value)
     // data.append(`category`, document.querySelector("#category").value)
-    data.append(`category_id`, document.querySelector("#post3").value)
+    data.append(`category_id`, 1)
   
        axios.post(`https://new-uzbek.onrender.com/api/v1/new/`,data,{headers:{Authorization:`Bearer ${sessionStorage.getItem("token")}`}}).then(res=>{
       alert("Успешно")
@@ -246,7 +246,7 @@ function detelnewactions(){
         <span>desc</span><br />
         <input type="text" id='postnew2' />
         <br />
-        <button onClick={()=>postnew()} >edit</button>
+        <button onClick={()=>postnew()} >dabavit</button>
     </div>
 </div>
 </div>
@@ -288,8 +288,6 @@ function detelnewactions(){
         <input type="text"  id='bir' /><br />
         <span>title</span><br />
         <input type="text" id='ikki' /><br />
-        <span>category_id</span><br />
-        <input type="text" id='uch' /><br />
         <span>category</span><br />
         <select name="" id="category1"><br />
           {data1.map((item)=>{
