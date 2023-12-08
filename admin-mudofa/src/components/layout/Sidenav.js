@@ -166,7 +166,7 @@ function Sidenav({ color }) {
             >
               {dashboard}
             </span>
-            <span className="label">Product</span>
+            <span className="label">Yangliklar</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key="1">

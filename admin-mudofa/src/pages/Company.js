@@ -102,16 +102,16 @@ export default function Company() {
 
   return (
     <div>
-        <div className="all-btn">
+        {/* <div className="all-btn">
             <button onClick={()=>document.querySelector(".bu-filyal-omagadasdessd1").style=`display:flex`}>dabavit</button>
-        </div>
+        </div> */}
 
               <table id="customers">
   <tr>
     <th>id</th>
-    <th>image</th>
-    <th>phone1</th>
-    <th>phone2</th>
+    <th>rasm</th>
+    <th>nomer1</th>
+    <th>nomer2</th>
     <th>instagram</th>
     <th>facebook</th>
     <th>telegram</th>
@@ -120,8 +120,7 @@ export default function Company() {
     <th>play_market</th>
     <th>twitter</th>
     <th>email</th>
-    <th>edit</th>
-    <th>delete</th>
+    <th>ozgartirish</th>
   </tr>
     {data.map((item)=>{
         return(
@@ -139,8 +138,7 @@ export default function Company() {
                 <td>{item.play_market}</td>
                 <td>{item.twitter}</td>
                 <td>{item.email}</td>
-                <td><button onClick={()=>editmalumot(item.id)}>edit</button></td>
-                <td><button onClick={()=>deleteiD(item.id)}>delete</button></td>
+                <td><button onClick={()=>editmalumot(item.id)}>ozgartirish</button></td>
 </tr>
             </>
         )
@@ -158,11 +156,11 @@ export default function Company() {
   X 
 </div>
 </div>
-        <span>image</span><br />
+        <span>rasm</span><br />
         <input type="text"  id='post1' /><br />
-        <span>phone1</span><br />
+        <span>nomer1</span><br />
         <input type="text" id='post2' /><br />
-        <span>phone2</span><br />
+        <span>nomer2</span><br />
         <input type="text" id='post3'/><br />
         <span>instagram</span><br />
         <input type="text" id='post4' /><br />
@@ -180,23 +178,10 @@ export default function Company() {
         <input type="text"  id='post10' /><br />
         <span>email</span><br />
         <input type="email"  id='post11'  /><br />
-        <button onClick={()=>postmetod()} >dabavit</button>
+        <button onClick={()=>postmetod()} >qoshish</button>
     </div>
 </div>
 
-</div>
-
-<div className="bu-filyala-assddea" style={{display:"none"}}>
-<div className="modal-delete">
-    <div className="modal-ichi">
-      <p>Вы действительно хотите удалить этот</p>
-      <div className="btn-modal">
-      <button onClick={()=>detelmetod()}>ДА</button>
-      <button onClick={()=>document.querySelector(".bu-filyala-assddea").style=`display:none`}>Нет</button>
-      
-      </div>
-    </div>
-</div>
 </div>
 
 
@@ -231,7 +216,7 @@ export default function Company() {
         <input type="text"  id='edit10' /><br />
         <span>email</span><br />
         <input type="email"  id='edit11'  /><br />
-        <button onClick={()=>editmetod()} >edit</button>
+        <button onClick={()=>editmetod()} >ozgartirish</button>
     </div>
 </div>
 

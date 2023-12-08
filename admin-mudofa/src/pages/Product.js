@@ -138,16 +138,16 @@ function detelnewactions(){
 {page===1?(
   <div>
         <div className="all-btn">
-        <button onClick={()=>document.querySelector(".bu-filyal-omagadasdessd1").style=`display:block`}>dabavit</button>
+        <button onClick={()=>document.querySelector(".bu-filyal-omagadasdessd1").style=`display:block`}>qoshish</button>
       </div>
           <table id="customers">
   <tr>
     <th>id</th>
-    <th>image</th>
-    <th>title</th>
-    <th>time_create</th>
-    <th>delete</th>
-    <th>edit</th>
+    <th>rasmlar</th>
+    <th>text</th>
+    <th>vohti</th>
+    <th>ochirish</th>
+    <th>ozgartrish</th>
   </tr>
     
     {data.map((item)=>{
@@ -158,8 +158,8 @@ function detelnewactions(){
         <td onClick={()=>newaction(item.id)}><img className='table-img' src={item.image} alt="" /></td>
         <td onClick={()=>newaction(item.id)}>{item.title}</td>
         <td onClick={()=>newaction(item.id)}>{item.time_create.slice(0,10)}</td>
-        <td><button onClick={()=>deltemetodId(item.id)}>delete</button></td>
-        <td><button onClick={()=>editmalumot(item.id)}>edit</button></td>
+        <td><button onClick={()=>deltemetodId(item.id)}>ochirish</button></td>
+        <td><button onClick={()=>editmalumot(item.id)}>ozgartrish</button></td>
        </tr>
         </>
       )
@@ -172,19 +172,19 @@ function detelnewactions(){
 ):(
   <div>
     <div className="all-btn1">
-      <button onClick={()=>setPage(1)}>nazad</button>
+      <button onClick={()=>setPage(1)}>orqaga</button>
     </div>
     <div className="all-btn">
-      <button onClick={()=>document.querySelector(".bu-filyal-omagadasdessdas1").style=`display:`}> dabavit</button>
+      <button onClick={()=>document.querySelector(".bu-filyal-omagadasdessdas1").style=`display:`}> qoshish</button>
     </div>
           <table id="customers">
   <tr>
     <th>id</th>
-    <th>image</th>
-    <th>title</th>
+    <th>rasmlar</th>
+    <th>text</th>
     <th>category_id</th>
-    <th>delete</th>
-    <th>edit</th>
+    <th>ochirish</th>
+    <th>ozgartirish</th>
   </tr>
   {date.map((item)=>{
     return(
@@ -194,8 +194,8 @@ function detelnewactions(){
         <td><img  className='table-img'  src={item.image} alt="" /></td>
         <td>{item.desc}</td>
         <td>{item.news_id}</td>
-        <td><button onClick={()=>deletee(item.id)} >delete</button></td>
-        <td><button onClick={()=>newactionedit(item.id)}>edit</button></td>
+        <td><button onClick={()=>deletee(item.id)} >ochirish</button></td>
+        <td><button onClick={()=>newactionedit(item.id)}>ozgartirish</button></td>
       </tr>
       </>
     )
@@ -218,9 +218,9 @@ function detelnewactions(){
   X 
 </div>
 </div>
-        <span>image</span><br />
+        <span>rasm</span><br />
         <input type="text"  id='new1' /><br />
-        <span>desc</span><br />
+        <span>mini-text</span><br />
         <textarea id="new2" cols="30" rows="10"></textarea>
         <br />
         <button onClick={()=>editnew()} >edit1</button>
@@ -237,9 +237,9 @@ function detelnewactions(){
   X 
 </div>
 </div>
-        <span>image</span><br />
+        <span>rasm</span><br />
         <input type="text"  id='postnew1' /><br />
-        <span>desc</span><br />
+        <span>mini-text</span><br />
         <input type="text" id='postnew2' />
         <br />
         <button onClick={()=>postnew()} >dabavit</button>
@@ -258,10 +258,10 @@ function detelnewactions(){
 <div className="bu-filyala-assddeasas" style={{display:"none"}} >
 <div className="modal-delete">
     <div className="modal-ichi">
-      <p>Вы действительно хотите удалить этот</p>
+      <p>siz rostanham shu yanglikni ochirmoqchimisiz</p>
       <div className="btn-modal">
-      <button onClick={()=>detelnewactions()}>ДА</button>
-      <button onClick={()=>document.querySelector(".bu-filyala-assddeasas").style=`display:none`}>Нет</button>
+      <button onClick={()=>detelnewactions()}>HA</button>
+      <button onClick={()=>document.querySelector(".bu-filyala-assddeasas").style=`display:none`}>Yoq</button>
       
       </div>
     </div>
@@ -280,7 +280,7 @@ function detelnewactions(){
   X 
 </div>
 </div>
-        <span>title</span><br />
+        <span>text</span><br />
         <input type="text" id='ikki' /><br />
         {/* <span>category</span><br /> */}
         {/* <select name="" id="category1"><br />
@@ -293,7 +293,7 @@ function detelnewactions(){
           })}
         </select><br /> */}
         <br />
-        <button onClick={()=>editmetod()} >edit</button>
+        <button onClick={()=>editmetod()} >ozgartirish</button>
     </div>
 </div>
 </div>
@@ -309,7 +309,7 @@ function detelnewactions(){
 </div>
         {/* <span>image</span><br />
         <input type="text"  id='post1' /><br /> */}
-        <span>title</span><br />
+        <span>text</span><br />
         <input type="text" id='post2' /><br />
         {/* <span>category</span><br />
         <select name="" id="category"><br />
@@ -322,7 +322,7 @@ function detelnewactions(){
           })}
         </select><br /> */}
         <br />
-        <button onClick={()=>postmetod()} >dabavit</button>
+        <button onClick={()=>postmetod()} >qoshish</button>
     </div>
 </div>
 </div>
@@ -331,10 +331,10 @@ function detelnewactions(){
 <div className="bu-filyala-assdde">
 <div className="modal-delete">
     <div className="modal-ichi">
-      <p>Вы действительно хотите удалить этот</p>
+      <p>siz rostanham shu yanglikni ochirmoqchimisiz</p>
       <div className="btn-modal">
-      <button onClick={()=>detelmetod()}>ДА</button>
-      <button onClick={()=>document.querySelector(".bu-filyala-assdde").style=`display:none`}>Нет</button>
+      <button onClick={()=>detelmetod()}>Ha</button>
+      <button onClick={()=>document.querySelector(".bu-filyala-assdde").style=`display:none`}>Yoq</button>
       
       </div>
     </div>
