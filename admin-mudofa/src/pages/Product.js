@@ -16,7 +16,7 @@ export default function Product() {
   useEffect(()=>{
     axios.get(`https://new-uzbek.onrender.com/api/v1/new/`).then(res=>{
       setData(res.data)
-      console.log(res.data)
+   
     })
   },[])
   useEffect(()=>{
@@ -32,10 +32,8 @@ export default function Product() {
   // },[])
   function editmetod(){
     var data = new FormData;
-    data.append(`image`, document.querySelector("#bir").value)
     data.append(`title`, document.querySelector("#ikki").value)
     data.append(`category_id`, 1)
-    data.append(`category`, document.querySelector("#category1").value)
     data.append(`look`,1 )
 
 
@@ -52,7 +50,7 @@ export default function Product() {
   }
   function postmetod(){
     var data = new FormData;
-    data.append(`image`, document.querySelector("#post1").value)
+
     data.append(`title`, document.querySelector("#post2").value)
     // data.append(`category`, document.querySelector("#category").value)
     data.append(`category_id`, 1)
@@ -147,7 +145,6 @@ function detelnewactions(){
     <th>id</th>
     <th>image</th>
     <th>title</th>
-    <th>category_id</th>
     <th>time_create</th>
     <th>delete</th>
     <th>edit</th>
@@ -160,7 +157,6 @@ function detelnewactions(){
         <td onClick={()=>newaction(item.id)}>{item.id}</td>
         <td onClick={()=>newaction(item.id)}><img className='table-img' src={item.image} alt="" /></td>
         <td onClick={()=>newaction(item.id)}>{item.title}</td>
-        <td onClick={()=>newaction(item.id)}>{item.category_id}</td>
         <td onClick={()=>newaction(item.id)}>{item.time_create.slice(0,10)}</td>
         <td><button onClick={()=>deltemetodId(item.id)}>delete</button></td>
         <td><button onClick={()=>editmalumot(item.id)}>edit</button></td>
@@ -225,9 +221,9 @@ function detelnewactions(){
         <span>image</span><br />
         <input type="text"  id='new1' /><br />
         <span>desc</span><br />
-        <input type="text" id='new2' /><br />
+        <textarea id="new2" cols="30" rows="10"></textarea>
         <br />
-        <button onClick={()=>editnew()} >edit</button>
+        <button onClick={()=>editnew()} >edit1</button>
     </div>
 </div>
 </div>
@@ -284,12 +280,10 @@ function detelnewactions(){
   X 
 </div>
 </div>
-<span>image</span><br />
-        <input type="text"  id='bir' /><br />
         <span>title</span><br />
         <input type="text" id='ikki' /><br />
-        <span>category</span><br />
-        <select name="" id="category1"><br />
+        {/* <span>category</span><br /> */}
+        {/* <select name="" id="category1"><br />
           {data1.map((item)=>{
             return(
               <>
@@ -297,7 +291,7 @@ function detelnewactions(){
               </>
             )
           })}
-        </select><br />
+        </select><br /> */}
         <br />
         <button onClick={()=>editmetod()} >edit</button>
     </div>
@@ -313,12 +307,10 @@ function detelnewactions(){
   X 
 </div>
 </div>
-        <span>image</span><br />
-        <input type="text"  id='post1' /><br />
+        {/* <span>image</span><br />
+        <input type="text"  id='post1' /><br /> */}
         <span>title</span><br />
         <input type="text" id='post2' /><br />
-        <span>category_id</span><br />
-        <input type="text" id='post3' /><br />
         {/* <span>category</span><br />
         <select name="" id="category"><br />
           {data1.map((item)=>{
